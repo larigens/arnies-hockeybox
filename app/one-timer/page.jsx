@@ -32,7 +32,7 @@ export default function Products() {
         }
     ]
     return (
-        <>
+        <main>
             <div className="flex flex-wrap justify-center mt-20">
                 {products.map((product) => (
                     <div key={product.id} className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-4">
@@ -52,6 +52,6 @@ export default function Products() {
                     </div>
                 ))}
             </div>
-        </>
+        </main>
     );
 }
