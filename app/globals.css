@@ -48,6 +48,33 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
+.slide-right {
+	-webkit-animation: slide-right 0.8s ease-out both;
+	        animation: slide-right 0.8s ease-out both;
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+  }
+}
+
+
 @keyframes rolling {
   from {
     transform: rotate(0deg);
