@@ -1,12 +1,17 @@
 'use client'
 
+// import Image from 'next/image';
 import Head from 'next/head';
-import Image from 'next/image';
-import Nav from '@/components/Nav';
-import { useState, useEffect } from 'react';
+import React, { useRef } from 'react'
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import { motion, useAnimation } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+const url = (name, wrap = false) =>
+  `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`;
 
 export default function Home() {
+  const parallax = useRef(null);
   const [scrollY, setScrollY] = useState(0);
   const controls = useAnimation();
 
@@ -22,35 +27,27 @@ export default function Home() {
   useEffect(() => {
     controls.start({ scaleX: scrollY / 100 });
   }, [scrollY]);
-
   return (
-    <div>
+    <main>
       <Head>
         <title>Arnie's Hockey Box</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Parallax ref={parallax} pages={3}>
+        <ParallaxLayer offset={1} speed={1} style={{ backgroundColor: '#125CA6' }} />
+        <ParallaxLayer offset={2} speed={1} style={{ backgroundColor: '#125CA6' }} />
 
-      <main className="bg-brand">
-        <section className="relative h-screen flex items-center justify-center">
-          <div className="absolute top-0 left-0 w-full h-full z-10">
-            <div
-              className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  'url("/bg/1.png")',
-                transform: `translateY(-${scrollY * 0.5}px)`,
-              }}
-            ></div>
-          </div>
-          <div className="relative z-20 text-center">
-            <Image
-              src='/homepage.png'
-              alt='hockey sticks and puck'
-              className='slide-right'
-              width={240}
-              height={160}
-              priority
-            />
+        <ParallaxLayer
+          offset={0}
+          speed={0}
+          factor={3}
+          style={{
+            backgroundImage: url('stars', true),
+            backgroundSize: 'cover',
+            backgroundColor: '#125CA6'
+          }}
+        >
+          <div className="text-center items-center mt-10">
             <motion.h1
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -71,15 +68,99 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1, duration: 0.5 }}
-              className="bg-white text-gray-900 py-2 px-6 rounded-full font-semibold text-xl hover:bg-gray-100"
+              className="bg-white text-brand py-2 px-6 rounded-full font-semibold text-xl hover:bg-secondary hover:text-brand text-center"
             >
               Subscribe Now
             </motion.button>
           </div>
-        </section>
-      </main>
-      <Nav />
-    </div>
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1} speed={-0.3} sticky={{ start: 0.75, end: 0.8 }} style={{ pointerEvents: 'none', opacity: 0.6 }}>
+          <img src='/items/flying-puck.png' style={{ width: '15%', marginLeft: '57%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={0.8} speed={0.1} style={{ opacity: 0.4 }}>
+          <img src='/players/player10.png' style={{ display: 'block', width: '20%', marginLeft: '10%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1} speed={0.3} style={{ opacity: 0.5 }}>
+          <img src='/players/player14.png' style={{ display: 'block', width: '20%', marginLeft: '75%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.1} speed={0.8} style={{ opacity: 0.4 }}>
+          <img src='/players/player3.png' style={{ display: 'block', width: '20%', marginLeft: '62%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.3} speed={0.3} style={{ opacity: 0.3 }}>
+          <img src='/players/referee2.png' style={{ display: 'block', width: '18%', marginLeft: '7%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.5} speed={0.4} style={{ opacity: 0.8 }}>
+          <img src='/box/box1.png' style={{ display: 'block', width: '15%', marginLeft: '8.5%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={1.9} speed={0.4} style={{ opacity: 0.5 }}>
+          <img src='/players/player6.png' style={{ display: 'block', width: '20%', marginLeft: '5%' }} />
+          <img src='/players/player12.png' style={{ display: 'block', width: '15%', marginLeft: '68%' }} />
+          <img src='/players/player7.png' style={{ display: 'block', width: '20%', marginLeft: '10%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer offset={2.4} speed={0.3} style={{ opacity: 0.6 }}>
+        <img src='/players/player11.png' style={{ display: 'block', width: '20%', marginLeft: '80%' }} />
+
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={2.3}
+          speed={0.4}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+          }}>
+          <img src='/box/box2.png' style={{ width: '30%' }} />
+        </ParallaxLayer>
+
+        {/* First Part of the landing page */}
+        <ParallaxLayer
+          offset={0}
+          speed={0.1}
+          onClick={() => parallax.current.scrollTo(1)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <img src='/box/box3.png' style={{ width: '25%' }} />
+          <img src='/players/player1.png' style={{ width: '30%', marginLeft: '15%' }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={1}
+          speed={0.4}
+          onClick={() => parallax.current.scrollTo(2)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <img src='/players/player4.png' style={{ width: '30%', opacity: 0.85 }} />
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={1.7}
+          speed={0.3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          onClick={() => parallax.current.scrollTo(0)}>
+          <img src='/box/puck-brand.png' style={{ width: '15%' }} />
+        </ParallaxLayer>
+      </Parallax>
+    </main>
   );
 };
 

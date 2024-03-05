@@ -68,12 +68,12 @@ export default function Nav() {
                         onClick={() => setActiveLink(link.id)} // Set the active link onClick
                     >
                         <span className='text-xl'>{link.name}</span>
-                        {/* <Image
+                        <Image
                             src={`/icons/${link.icon}`}
                             width={25}
                             height={25}
                             className='white-img'
-                        /> */}
+                        />
                         {/* Puck icon for active link */}
                         {link.id === activeLink && <Image src="/icons/hockey-puck.png" width={25} height={25} className="white-img" />}
                     </Link>

@@ -16,8 +16,30 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* To ensure that the entire page is covered and there are no margins or padding around it. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
   color: #fff;
+}
+
+/* Ensures that the main content takes up at least the full height of the page. */
+main {
+  min-height: calc(100% - 5em) !important;
+  /* 3em is the height of the footer */
+}
+
+/* This ensures that the footer always stays at the bottom of the page, regardless of the height of the main content. */
+footer {
+  height: 5em;
 }
 
 .bg-secondary {
@@ -33,44 +55,54 @@ body {
 }
 
 .text-secondary {
-  color:#FDDD1C;
+  color: #FDDD1C;
 }
 
-.white-img{
+.white-img {
   filter: invert(1);
 }
 
-.glassmorphism {
-  backdrop-filter: blur(7px) saturate(183%);
-  -webkit-backdrop-filter: blur(7px) saturate(183%);
-  background-color: rgba(17, 25, 40, 0);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+@media (max-width: 750px) {
+  .card {
+    width: 40%;
+  }
+
+  .parallax {
+    margin-right: 1.5rem;
+  }
+
+  .sticky {
+    margin-left: 1.5rem;
+  }
 }
 
+
 .slide-right {
-	-webkit-animation: slide-right 0.8s ease-out both;
-	        animation: slide-right 0.8s ease-out both;
+  -webkit-animation: slide-right 0.8s ease-out both;
+  animation: slide-right 0.8s ease-out both;
 }
 
 @-webkit-keyframes slide-right {
   0% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
+
   100% {
     -webkit-transform: translateX(400px);
-            transform: translateX(400px);
+    transform: translateX(400px);
   }
 }
+
 @keyframes slide-right {
   0% {
     -webkit-transform: translateX(0);
-            transform: translateX(0);
+    transform: translateX(0);
   }
+
   100% {
     -webkit-transform: translateX(400px);
-            transform: translateX(400px);
+    transform: translateX(400px);
   }
 }
 
@@ -79,16 +111,14 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .rolling-image {
   animation: rolling 2s ease-out;
-}
-
-.rounded-100 {
-  border-radius: 100px;
 }
 
 @layer utilities {
