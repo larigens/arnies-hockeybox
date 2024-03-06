@@ -45,13 +45,13 @@ export default function Nav() {
 
 
     return (
-        <div className='bg-brand flex items-center justify-between px-4 py-2'>
-            <Link href={'/'} className='bg-secondary rounded-full shadow-md p-2 mr-4 rolling-image'>
+        <div className='bg-dark flex items-center justify-between px-4 py-2 h-40'>
+            <Link href={'/'} className='shadow-md p-2'>
                 <Image
                     src='/arnieslogo-removebg.png'
                     alt='Arnies Logo'
-                    width={120}
-                    height={120}
+                    width={200}
+                    height={200}
                 />
             </Link>
 
