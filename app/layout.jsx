@@ -15,9 +15,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang='en'>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <body className={inter.className}>
         <Nav />
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

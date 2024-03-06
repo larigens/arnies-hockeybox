@@ -5,34 +5,34 @@ export default function Products() {
         {
             id: 1,
             name: 'Hockey Pucks (Pack of 6)',
-            img: 'puck.png',
+            img: 'products/puck.png',
             description: 'Official size and weight hockey pucks for practice and game play.',
             price: '$25'
         },
         {
             id: 2,
             name: 'Stick Tape (Pack of 3)',
-            img: 'stick-tape.png',
+            img: 'products/stick-tape.png',
             description: 'High-quality cloth tape for wrapping hockey sticks, providing grip and puck control.',
             price: '$11'
         },
         {
             id: 3,
             name: 'Skate Laces',
-            img: 'skate-laces.png',
+            img: 'products/skate-laces.png',
             description: 'Heavy-duty waxed hockey skate laces designed for secure and tight tying',
             price: '$6'
         },
         {
             id: 4,
             name: 'Hockey Skate Blade Guards',
-            img: 'blade-guards.png',
+            img: 'products/blade-guards.png',
             description: 'Protective covers for hockey skate blades, ideal for storage and transport.',
             price: '$20'
         }
     ]
     return (
-        <main>
+        <>
             <div className="flex flex-wrap justify-center mt-20">
                 {products.map((product) => (
                     <div key={product.id} className="max-w-xs bg-white shadow-lg rounded-lg overflow-hidden m-4">
@@ -52,6 +52,6 @@ export default function Products() {
                     </div>
                 ))}
             </div>
-        </main>
+        </>
     );
 }
